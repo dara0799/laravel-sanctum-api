@@ -93,4 +93,15 @@ class ProductController extends Controller
         $product->delete();
         return 'This product has been destroyed successfully!';
     }
+
+    /**
+     * Search the specified resource from storage.
+     *
+     * @param  str  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function search($product)
+    {
+        return Product::where('name', 'like', '%' . $product . '%')->get();
+    }
 }
